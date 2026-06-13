@@ -24,6 +24,46 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 
+const coverageMapElement = document.querySelector('#coverage-map');
+
+if (coverageMapElement && window.L) {
+  const coverageAreas = [
+    { name: 'Embakasi South & surroundings', lat: -1.326, lng: 36.886, radius: 3500 },
+    { name: 'Embakasi East & surroundings', lat: -1.306, lng: 36.947, radius: 6200 },
+    { name: 'Embakasi North & surroundings', lat: -1.248, lng: 36.902, radius: 2600 },
+    { name: 'South B', lat: -1.311, lng: 36.838, radius: 1200 },
+    { name: 'South C', lat: -1.319, lng: 36.829, radius: 1300 },
+    { name: 'Dandora', lat: -1.247, lng: 36.899, radius: 1700 },
+    { name: 'Allsops', lat: -1.242, lng: 36.871, radius: 900 },
+    { name: 'Obama', lat: -1.278, lng: 36.914, radius: 900 },
+    { name: 'Kayole', lat: -1.283, lng: 36.919, radius: 1900 },
+    { name: 'Kariobangi South', lat: -1.261, lng: 36.884, radius: 1100 },
+    { name: 'Kariobangi North', lat: -1.252, lng: 36.883, radius: 1100 },
+    { name: 'Riverside', lat: -1.269, lng: 36.806, radius: 1100 },
+    { name: 'Baba Dogo', lat: -1.231, lng: 36.875, radius: 1200 },
+  ];
+
+  const coverageMap = L.map(coverageMapElement, { scrollWheelZoom: false });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors',
+  }).addTo(coverageMap);
+
+  const coverageGroup = L.featureGroup().addTo(coverageMap);
+  coverageAreas.forEach((area) => {
+    L.circle([area.lat, area.lng], {
+      radius: area.radius,
+      color: '#e83218',
+      weight: 3,
+      dashArray: '4 8',
+      fillColor: '#f04408',
+      fillOpacity: 0.08,
+    }).bindTooltip(area.name, { direction: 'top' }).bindPopup(`<strong>${area.name}</strong><br>Approximate Patriots coverage zone.`).addTo(coverageGroup);
+  });
+
+  coverageMap.fitBounds(coverageGroup.getBounds(), { padding: [20, 20] });
+}
+
 document.querySelectorAll('[data-product-carousel]').forEach((carousel) => {
   const slides = [...carousel.querySelectorAll('.product-slide')];
   const dotsContainer = carousel.querySelector('.product-carousel-dots');

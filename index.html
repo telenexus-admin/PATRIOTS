@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Fast, reliable and affordable home internet packages in Kenya.">
   <title>Patriots Technologies | High Speed Internet</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="logo-fix.css">
 </head>
@@ -143,7 +144,21 @@
 
     <section class="process section" id="coverage">
       <div class="container">
-        <div class="center-heading reveal"><span class="eyebrow">Get online quickly</span><h2>Three Easy Steps To Connect</h2></div>
+        <div class="center-heading reveal"><span class="eyebrow">Our network reach</span><h2>Coverage Areas</h2><p>Patriots Technologies serves homes and businesses across these Nairobi neighbourhoods and surrounding areas.</p></div>
+        <div class="coverage-layout">
+          <div class="coverage-list reveal">
+            <h3>Areas We Cover</h3>
+            <div class="coverage-pills"><span>Embakasi South &amp; surroundings</span><span>Embakasi East &amp; surroundings</span><span>Embakasi North &amp; surroundings</span><span>South B</span><span>South C</span><span>Dandora</span><span>Allsops</span><span>Obama</span><span>Kayole</span><span>Kariobangi South</span><span>Kariobangi North</span><span>Riverside</span><span>Baba Dogo</span></div>
+            <p>Coverage boundaries are approximate. Share your exact location with our team for a final availability check.</p>
+            <a class="btn btn-primary" href="https://wa.me/254111665374?text=Hello%2C%20I%20would%20like%20to%20confirm%20internet%20coverage%20at%20my%20location" target="_blank" rel="noopener">Confirm My Location</a>
+          </div>
+          <div class="coverage-map-wrap reveal">
+            <div id="coverage-map" aria-label="Interactive map showing Patriots Technologies coverage areas"></div>
+            <div class="coverage-map-key"><span></span> Approximate covered area</div>
+            <a class="coverage-google-link" href="https://www.google.com/maps/search/?api=1&amp;query=Embakasi%2C%20Nairobi%2C%20Kenya" target="_blank" rel="noopener">Open in Google Maps</a>
+          </div>
+        </div>
+        <div class="center-heading connection-heading reveal"><span class="eyebrow">Get online quickly</span><h2>Three Easy Steps To Connect</h2></div>
         <div class="process-row">
           <div class="process-step reveal"><div class="step-icon">1</div><h3>Check Coverage</h3><p>Tell us where you live and we’ll confirm availability.</p></div>
           <div class="process-line"></div>
@@ -225,6 +240,7 @@
       <span>WhatsApp</span>
     </a>
   </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
